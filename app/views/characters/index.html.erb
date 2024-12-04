@@ -10,10 +10,12 @@
   <% end %>
 </div>
 <div>
+  <%= paginate @characters %>
   <% @characters.each do |character| %>
     <div>
       <%= character.name %><%= character.age %><br>
       <%= character.detail %>
     </div>
   <% end %>
+  <%= paginate @characters %>
 </div>

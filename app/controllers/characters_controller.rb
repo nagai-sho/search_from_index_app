@@ -2,9 +2,9 @@ class CharactersController < ApplicationController
   def index
     @keyword = params[:keyword]
     @characters = if @keyword.present?
-      Character.search(@keyword)
+      Character.order(created_at: :desc).search(@keyword).page(params[:page]).per(5) # 検索結果にページネーションを適用
     else
-      Character.all
+      Character.order(created_at: :desc).page(params[:page]).per(5) # 1ページあたり5件表示
     end
   end
 
