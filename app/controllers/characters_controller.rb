@@ -6,8 +6,14 @@ class CharactersController < ApplicationController
   def new
     @character = Character.new()
   end
-
+  
   def create
+    @character = Character.new(params_character)
+    if @character.save
+      redirect_to characters_path
+    else
+      render :new
+    end
     
   end
   def edit
@@ -19,4 +25,10 @@ class CharactersController < ApplicationController
   def destroy
     
   end
+
+  private
+  def params_character
+    params.require(:character).permit(:name, :age, :detail)
+  end
+
 end
