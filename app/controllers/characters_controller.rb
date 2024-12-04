@@ -1,6 +1,11 @@
 class CharactersController < ApplicationController
   def index
-    @characters = Character.all
+    @keyword = params[:keyword]
+    @characters = if @keyword.present?
+      Character.search(@keyword)
+    else
+      Character.all
+    end
   end
 
   def new
@@ -24,6 +29,10 @@ class CharactersController < ApplicationController
   end
   def destroy
     
+  end
+
+  def self_search(keyword)
+    where('name like ?', '%#{keyword}%')
   end
 
   private
