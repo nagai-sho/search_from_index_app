@@ -1,3 +1,9 @@
-<h1>キャラクターbooks</h1>
+<h1>キャラクターBooks</h1>
 <div></div>
 <%= link_to 'キャラクターを作成する', new_character_path %>
+<% @characters.each do |character| %>
+  <div>
+    <%= character.name %><%= character.age %><br>
+    <%= character.detail %>
+  </div>
+<% end %>
