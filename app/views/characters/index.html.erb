@@ -1,9 +1,19 @@
 <h1>キャラクターBooks</h1>
 <div></div>
-<%= link_to 'キャラクターを作成する', new_character_path %>
-<% @characters.each do |character| %>
-  <div>
-    <%= character.name %><%= character.age %><br>
-    <%= character.detail %>
-  </div>
-<% end %>
+<div>
+  <%= link_to 'キャラクターを作成する', new_character_path %>
+</div>
+<div>
+  <%= form_with local: true, method: :get do |f| %>
+    <%= f.text_field :keyword %>
+    <%= f.submit '検索' %>
+  <% end %>
+</div>
+<div>
+  <% @characters.each do |character| %>
+    <div>
+      <%= character.name %><%= character.age %><br>
+      <%= character.detail %>
+    </div>
+  <% end %>
+</div>

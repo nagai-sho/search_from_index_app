@@ -31,10 +31,6 @@ class CharactersController < ApplicationController
     
   end
 
-  def self_search(keyword)
-    where('name like ?', '%#{keyword}%')
-  end
-
   private
   def params_character
     params.require(:character).permit(:name, :age, :detail)

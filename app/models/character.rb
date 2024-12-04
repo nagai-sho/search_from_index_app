@@ -4,4 +4,9 @@ class Character < ApplicationRecord
     validates :age
     validates :detail
   end
+
+  def self.search(keyword)
+    where('name like ?', "%#{keyword}%")
+  end
+  
 end
